@@ -1,5 +1,4 @@
-![Middleman Logo](https://s3.amazonaws.com/middlemantemplate/materialize.png "Middleman Logo")
-#Middleman 4 / Materialize CSS Boilerplate
+#Plex Status Page
 
 *Oh It's so f@!king nice.*
 

@@ -15,11 +15,14 @@
 
   <body class="<%= page_classes %>">
     <%= partial 'layouts/partials/navbar' %>
-    <main>
+    <main class="grey darken-3 white-text">
       <!-- CONTENT SHOWS HERE -->
       <%= yield %>
     </main>
     <%= partial 'layouts/partials/footer' %>
+    <script type="text/javascript">
+        var tweets = <%= twitter %>;
+    </script>
     <%= javascript_include_tag :all %>
   </body>
 </html>
