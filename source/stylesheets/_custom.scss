@@ -4,6 +4,12 @@
 }
 .collection-item{
   border-bottom: 0 !important;
+  h5 {
+    font-size: 1.64rem;
+    line-height: 110%;
+    margin: 0.82rem 0 0.656rem 0;
+    margin-bottom: 0;
+  }
 }
 .collection .collection-item.avatar .circle {
   position: absolute;
@@ -14,4 +20,19 @@
   display: inline-block;
   vertical-align: middle;
   top: 26px;
+}
+.collection .collection-item.avatar {
+    min-height: 84px;
+    padding-left: 92px;
+    position: relative;
+}
+.collection .collection-item.avatar p {
+    margin: 0;
+    margin-bottom: 5px;
+}
+footer.page-footer{
+  margin-top: 0;
+}
+.brand-logo img{
+  max-height: 55px;
 }

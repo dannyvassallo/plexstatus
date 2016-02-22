@@ -1,0 +1,70 @@
+var serverStatus;
+
+function printTweets(tweets, tweetContainerEl){
+  var tweetContainer = $(tweetContainerEl);
+  $(tweets).each(function(){
+    var tweetDate = new Date(this.time);
+    var hours = tweetDate.getHours();
+    hours = (hours > 12)? hours -12 : hours;
+    hours = (hours == '00')? 12 : hours;
+    var suffix = (hours >= 12)? 'AM' : 'PM';
+    var status = this.tweet.split('-- ');
+    var timeArray = this.time.split(' ');
+    var theDate = timeArray[0].split('-');
+    var year = theDate[0][2]+theDate[0][3];
+    var month = theDate[1].replace(/^0+/, '');
+    var day = theDate[2].replace(/^0+/, '');
+    var formattedDate = month+'/'+day+'/'+year;
+    var statusString = status[0].toLowerCase();
+    if(statusString.indexOf("status up") > -1){
+      var statusClass = 'green',
+      statusTitle = 'SERVER UP',
+      image = '/images/up.png';
+    } else if(statusString.indexOf("status down") > -1){
+      var statusClass = 'red',
+      statusTitle = 'SERVER DOWN',
+      image = '/images/down.png';
+    } else if(statusString.indexOf("status notice") > -1){
+      var statusClass = 'yellow',
+      statusTitle = 'NOTICE',
+      image = '/images/alert.png';
+    }
+    var tweet = '<li class="collection-item avatar '+statusClass+'  darken-2">'
+      + '<img src="'+image+'" alt="" class="circle">'
+      + '<span class="title '+statusClass+'-text text-darken-4"><h5>'+statusTitle+'</h5></span>'
+      + '<p class="'+statusClass+'-text text-darken-4">'+status[1]+'<br>'
+        + '<strong>'+formattedDate+' | '+hours+suffix+'</strong>'
+      + '</p>'
+  + '</li>';
+    tweetContainer.append(tweet);
+  });
+}
+
+function getStatus(tweets){
+  tweets = tweets;
+  var status = tweets[0].tweet.split('-- ');
+  var statusString = status[0].toLowerCase();
+  if(statusString.indexOf("status up") > -1){
+    var statusClass = 'green',
+    statusTitle = 'SERVER UP';
+    console.log(statusTitle);
+  } else if(statusString.indexOf("status down") > -1){
+    var statusClass = 'red',
+    statusTitle = 'SERVER DOWN';
+    console.log(statusTitle);
+  } else if(statusString.indexOf("status notice") > -1){
+    var statusClass = 'yellow',
+    statusTitle = 'NOTICE';
+  }
+  $('#current-status').html(statusTitle);
+  $('#current-status').addClass(statusClass+'-text');
+}
+
+$(function(){
+  printTweets(tweets, "#tweet-container");
+  getStatus(tweets);
+});
+
+
+
+
