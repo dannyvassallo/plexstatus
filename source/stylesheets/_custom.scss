@@ -51,3 +51,8 @@ footer.page-footer{
     padding-bottom: 10%;
   }
 }
+
+.error{
+  position: relative !important;
+  @extend .red-text;
+}

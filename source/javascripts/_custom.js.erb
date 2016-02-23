@@ -79,17 +79,67 @@ $(function(){
     getStatus(tweets);
   }
 
-  $('#contact').ajaxForm({
-    url: "<%= ENV['EMAIL_SERVER'] %>",
-    type: 'post',
-    success: function(res){
-      $('#contact input').val('');
-      $('#contact textarea').val('');
-      $('#contact button[type=submit]').html('GOT IT <i class="fa fa-thumbs-up"></i>').prop('disabled', 'disabled');
-      Materialize.toast('Thanks! Maybe we\'ll speak.', 4000,'green');
-    }
-  });
-
   ping();
 });
 
+
+$.validator.addMethod("valueNotEquals", function(value, element, arg){
+return arg != value;
+}, "Please select a reason");
+
+
+$(function(){
+
+$("#contact").validate({
+  rules: {
+    name: {
+      required: true,
+      minlength: 5
+    },
+    device: {
+      required: true,
+      minlength: 4
+    },
+    email: {
+      required: true,
+      email: true
+    },
+    message: {
+      required: true,
+      minlength: 10
+    },
+  },
+  messages: {
+    name: {
+      required: "Please enter your full name",
+      minlength: "Your full name must be longer than that"
+    },
+    device: {
+      required: "Please list all devices you plan to use",
+      minlength: "Devices must be longer than that."
+    },
+    message: {
+      required: "Please say something.",
+      minlength: "At least 10 characters."
+    },
+    email: "Please enter a valid email address"
+  },
+  submitHandler: function(form) {
+    $('#contact').ajaxSubmit({
+      url: "<%= ENV['EMAIL_SERVER'] %>",
+      type: 'post',
+      success: function(res){
+        $('#contact input').val('');
+        $('#contact textarea').val('');
+        $('#contact button[type=submit]').html('GOT IT <i class="fa fa-thumbs-up"></i>').prop('disabled', 'disabled');
+        Materialize.toast('Thanks! Maybe we\'ll speak.', 4000,'green');
+      }
+    });
+  }
+});
+
+$(".select-dropdown").rules("add", {
+  valueNotEquals: "Reason for Contact"
+});
+
+});
