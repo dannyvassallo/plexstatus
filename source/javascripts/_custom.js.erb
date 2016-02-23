@@ -64,8 +64,10 @@ function getStatus(tweets){
 $(function(){
   printTweets(tweets, "#tweet-container");
   getStatus(tweets);
+
+  $('#contact').ajaxForm({
+    url: "<%= ENV['EMAIL_SERVER'] %>",
+    type: 'post'
+  });
 });
-
-
-
 
