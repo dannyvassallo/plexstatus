@@ -1,6 +1,7 @@
-<div class="container">
+<div class="container contact-form">
   <div class="row">
-    <div class="col l12">
+    <div class="col l12 card grey darken-4 hoverable">
+      <h3>Contact</h3>
       <form id="contact">
         <div class="input-field col s12">
           <input name="name" type="text" placeholder="Your Full Name">
@@ -12,7 +13,7 @@
           <input name="device" type="text" placeholder="Enter Your Device Type (ie:  Roku, Amazon Fire, Chromecast)">
         </div>
         <div class="input-field col s12">
-          <select>
+          <select name="reason">
             <option value="" disabled selected>Reason for Contact</option>
             <option value="1">Server Is Down</option>
             <option value="2">Requesting Access</option>
@@ -20,10 +21,10 @@
           </select>
         </div>
         <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea" length="120"></textarea>
+          <textarea id="textarea1" class="materialize-textarea" length="120" name="message"></textarea>
           <label for="textarea1">Message</label>
         </div>
-        <button type="submit" class="btn btn-large orange lighten-1 grey-text text-darken-3">Submit</button>
+        <button type="submit" class="margin-top btn btn-large orange lighten-1 grey-text text-darken-3 hoverable">Submit</button>
       </form>
     </div>
   </div>
