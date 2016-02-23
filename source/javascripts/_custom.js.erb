@@ -3,6 +3,7 @@ var serverStatus;
 function printTweets(tweets, tweetContainerEl){
   var tweetContainer = $(tweetContainerEl);
   $(tweets).each(function(){
+    console.log(this.time);
     var tweetDate = new Date(this.time);
     var hours = tweetDate.getHours();
     hours = (hours > 12)? hours -12 : hours;
@@ -13,7 +14,7 @@ function printTweets(tweets, tweetContainerEl){
     var theDate = timeArray[0].split('-');
     var year = theDate[0][2]+theDate[0][3];
     var month = theDate[1].replace(/^0+/, '');
-    var day = theDate[2].replace(/^0+/, '');
+    var day = theDate[2];
     var formattedDate = month+'/'+day+'/'+year;
     var statusString = status[0].toLowerCase();
     if(statusString.indexOf("status up") > -1){

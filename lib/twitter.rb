@@ -24,6 +24,7 @@ module TwitterCred
     feed = client.get_all_tweets("danplexstatus")
     tweets = []
     feed.each do |tweet|
+      puts tweet.created_at
       tweet_object = {
         "tweet" =>  tweet.text,
         "time" =>  tweet.created_at
