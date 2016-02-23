@@ -2,7 +2,27 @@
   <div class="row">
     <div class="col l12">
       <form id="contact">
-        <input name="name" type=text></input>
+        <div class="input-field col s12">
+          <input name="name" type="text" placeholder="Your Full Name">
+        </div>
+        <div class="input-field col s12">
+          <input name="email" type="text" placeholder="Your Email Address">
+        </div>
+        <div class="input-field col s12">
+          <input name="device" type="text" placeholder="Enter Your Device Type (ie:  Roku, Amazon Fire, Chromecast)">
+        </div>
+        <div class="input-field col s12">
+          <select>
+            <option value="" disabled selected>Reason for Contact</option>
+            <option value="1">Server Is Down</option>
+            <option value="2">Requesting Access</option>
+            <option value="3">General Request</option>
+          </select>
+        </div>
+        <div class="input-field col s12">
+          <textarea id="textarea1" class="materialize-textarea" length="120"></textarea>
+          <label for="textarea1">Message</label>
+        </div>
         <button type="submit" class="btn btn-large orange lighten-1 grey-text text-darken-3">Submit</button>
       </form>
     </div>
