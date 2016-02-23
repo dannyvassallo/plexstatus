@@ -21,7 +21,7 @@ module TwitterCred
       end
     end
 
-    feed = client.get_all_tweets("danplexstatus")
+    feed = client.get_all_tweets(ENV['TWITTERHANDLE'])
     tweets = []
     feed.each do |tweet|
       puts tweet.created_at
