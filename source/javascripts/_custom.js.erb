@@ -1,5 +1,17 @@
 var serverStatus;
 
+function ping(){
+   $.ajax({
+      url: "<%= ENV['EMAIL_SERVER'] %>",
+      success: function(result){
+         console.log('reply');
+      },
+      error: function(result){
+          console.log('timeout/error');
+      }
+   });
+}
+
 function printTweets(tweets, tweetContainerEl){
   var tweetContainer = $(tweetContainerEl);
   $(tweets).each(function(){
@@ -67,7 +79,14 @@ $(function(){
 
   $('#contact').ajaxForm({
     url: "<%= ENV['EMAIL_SERVER'] %>",
-    type: 'post'
+    type: 'post',
+    success: function(res){
+      $('#contact input').val('');
+    }
   });
+
+  setInterval(function(){
+    ping();
+  }, 1000);
 });
 
