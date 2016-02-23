@@ -74,14 +74,18 @@ function getStatus(tweets){
 }
 
 $(function(){
-  printTweets(tweets, "#tweet-container");
-  getStatus(tweets);
+  if(typeof tweets != 'undefined'){
+    printTweets(tweets, "#tweet-container");
+    getStatus(tweets);
+  }
 
   $('#contact').ajaxForm({
     url: "<%= ENV['EMAIL_SERVER'] %>",
     type: 'post',
     success: function(res){
       $('#contact input').val('');
+      $('#contact button[type=submit]').html('GOT IT <i class="fa fa-thumbs-up"></i>').prop('disabled', 'disabled');
+      Materialize.toast('I am a toast!', 4000,'green');
     }
   });
 

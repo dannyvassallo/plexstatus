@@ -19,9 +19,7 @@
       <%= yield %>
     </main>
     <%= partial 'layouts/partials/footer' %>
-    <script type="text/javascript">
-        var tweets = <%= twitter %>;
-    </script>
     <%= javascript_include_tag :all %>
+    <%= yield_content :index %>
   </body>
 </html>
